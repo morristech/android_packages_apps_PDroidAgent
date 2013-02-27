@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.privacy.pdroidagent"
+        coreApp="true"
+        android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
+
+    <permission android:label="@string/permlab_receive_kill_task_command" android:name="android.privacy.RECEIVE_TASK_KILL_COMMAND" android:protectionLevel="signature" android:permissionGroup="android.permission-group.PERSONAL_INFO" android:description="@string/permdesc_receive_kill_task_command" />
+    <uses-permission android:name="android.privacy.RECEIVE_TASK_KILL_COMMAND" />
+
+    <permission android:label="@string/permlab_receive_disable_apps" android:name="android.privacy.RECEIVE_DISABLE_ENABLE_APPLICATIONS" android:protectionLevel="signature" android:permissionGroup="android.permission-group.PERSONAL_INFO" android:description="@string/permdesc_receive_disable_apps" />
+    <uses-permission android:name="android.privacy.RECEIVE_DISABLE_ENABLE_APPLICATIONS" />
+    
+    <application android:label="@string/label"
+            android:taskAffinity="">
+	<receiver android:name=".PrivacyReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="com.privacy.pdroid.KILL_TASKS" />
+                <action android:name="com.privacy.pdroid.DISABLE_ENABLE_APPLICATION" />
+            </intent-filter>
+        </receiver>	
+    </application>
+</manifest>
